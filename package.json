@@ -1,0 +1,35 @@
+{
+  "name": "express-native-promise-router",
+  "description": "Promise compatible Express Router",
+  "author": "Iddan Aharonson",
+  "main": "lib/promise-router.js",
+  "engines": {
+    "node": ">=6.9.0"
+  },
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aniddan/express-promise-router.git"
+  },
+  "keywords": [
+    "promise",
+    "express",
+    "router",
+    "native"
+  ],
+  "bugs": {
+    "url": "https://github.com/aniddan/express-promise-router/issues"
+  },
+  "homepage": "https://github.com/aniddan/express-promise-router#readme",
+  "peerDependencies": {
+    "express": ">=4.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.14.1",
+    "eslint-config-fbjs": "^1.1.1"
+  }
+}
