@@ -13,7 +13,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aniddan/express-promise-router.git"
+    "url": "git+https://github.com/aniddan/express-native-promise-router.git"
   },
   "keywords": [
     "promise",
@@ -22,9 +22,9 @@
     "native"
   ],
   "bugs": {
-    "url": "https://github.com/aniddan/express-promise-router/issues"
+    "url": "https://github.com/aniddan/express-native-promise-router/issues"
   },
-  "homepage": "https://github.com/aniddan/express-promise-router#readme",
+  "homepage": "https://github.com/aniddan/express-native-promise-router#readme",
   "peerDependencies": {
     "express": ">=4.0.0"
   },
