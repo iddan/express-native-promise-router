@@ -33,3 +33,35 @@ app.use((req, res, next) => {
 
 app.use(router);
 ```
+
+### Comparison
+
+#### GET users
+
+Resolved state is being passed through `res.locals.resolved` because in most cases you'd like to wrap state and errors in your app's responses.
+
+##### express-native-promise-router
+```JavaScript
+const router = new PromiseRouter();
+
+// By returning a promise rejections are automatically passed to next().
+router.get('/users', (req, res) => {
+  return db.collection('users').find({}).toArray();
+});
+
+router.use((req, res) => {
+  res.json({ data: res.locals.resolved });
+});
+
+app.use(router);
+```
+##### co
+```JavaScript
+app.get('/users', (req, res, next) => co(function* () {
+  res.locals.resolved = yield db.collection('users').find({}).toArray();
+}).catch(next));
+
+app.use((req, res) => {
+  res.json({ data: res.locals.resolved });
+});
+```
