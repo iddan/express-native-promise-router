@@ -47,6 +47,26 @@ app.use((req, res) => {
 ```
 Resolved state is being passed through `res.locals.resolved` because in most cases you'd like to wrap state and errors in your app's responses.
 
+#### With async/await
+
+```JavaScript
+const express = require('express');
+const PromiseRouter = require('express-native-promise-router');
+
+const app = express();
+const router = new PromiseRouter();
+
+app.use(router);
+
+router.get('/', async (req, res) => {
+  return await Promise.resolve('demo');
+});
+
+app.use((req, res) => {
+  res.end(res.locals.resolved);
+});
+```
+
 ### Comparison
 
 ##### Handling errors  
