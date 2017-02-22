@@ -1,5 +1,7 @@
 # Express Native Promise Router
-## Promise compatible Express Router
+## Motivation
+Allows you to return Promises in your route handlers.
+This library wraps the express.Router and allows you to use its complete API.
 
 ### Features
  - Native promises
@@ -12,7 +14,11 @@
 ```Bash
  $ npm install --save express-native-promise-router
 ```
-*yarn would be even better*
+
+*or even better with yarn:*
+```Bash
+ $ yarn add express-native-promise-router
+```
 
 ### Usage
 
@@ -23,43 +29,51 @@ const PromiseRouter = require('express-native-promise-router');
 const app = express();
 const router = new PromiseRouter();
 
+app.use(router);
+
 router.get('/', (req, res) => {
   return Promise.resolve('demo');
 });
 
-app.use((req, res, next) => {
+app.use((req, res) => {
   res.end(res.locals.resolved);
 });
 
-app.use(router);
 ```
+Resolved state is being passed through `res.locals.resolved` because in most cases you'd like to wrap state and errors in your app's responses.
 
 ### Comparison
 
-#### GET users
+##### Handling errors  
+By returning a promise rejections are automatically passed to next().
 
-Resolved state is being passed through `res.locals.resolved` because in most cases you'd like to wrap state and errors in your app's responses.
-
-##### express-native-promise-router
 ```JavaScript
 const router = new PromiseRouter();
 
-// By returning a promise rejections are automatically passed to next().
+app.use(router);
+
 router.get('/users', (req, res) => {
   return db.collection('users').find({}).toArray();
 });
 
-router.use((req, res) => {
+app.use((error, req, res, next) => {
+  res.status(500).json({ error });
+});
+
+app.use((req, res) => {
   res.json({ data: res.locals.resolved });
 });
 
-app.use(router);
 ```
-##### co
+##### Using co
 ```JavaScript
 app.get('/users', (req, res, next) => co(function* () {
   res.locals.resolved = yield db.collection('users').find({}).toArray();
 }).catch(next));
+
+app.use((error, req, res, next) => {
+  res.status(500).json({ error });
+});
 
 app.use((req, res) => {
   res.json({ data: res.locals.resolved });
