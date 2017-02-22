@@ -4,7 +4,7 @@
 </a>
 # Express Native Promise Router
 ## Motivation
-Allows you to return Promises in your route handlers.
+Allows you to use async functions or return Promises in your route handlers.
 
 This library wraps the express.Router and allows you to use its complete API.
 
