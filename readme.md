@@ -1,6 +1,11 @@
+<a href="http://promisesaplus.com/">
+    <img src="http://promisesaplus.com/assets/logo-small.png" alt="Promises/A+ logo"
+         title="Promises/A+ 1.1 compliant" align="right" />
+</a>
 # Express Native Promise Router
 ## Motivation
 Allows you to return Promises in your route handlers.
+
 This library wraps the express.Router and allows you to use its complete API.
 
 ### Features
