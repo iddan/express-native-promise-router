@@ -2,13 +2,17 @@
     <img src="http://promisesaplus.com/assets/logo-small.png" alt="Promises/A+ logo"
          title="Promises/A+ 1.1 compliant" align="right" />
 </a>
+
 # Express Native Promise Router
+
 ## Motivation
+
 Allows you to use async functions or return Promises in your route handlers.
 
 This library wraps the express.Router and allows you to use its complete API.
 
 ### Features
+
  - Native promises
  - Express standard API
  - extend-ible class
@@ -69,7 +73,8 @@ app.use((req, res) => {
 
 ### Comparison
 
-##### Handling errors  
+##### Handling errors
+
 By returning a promise rejections are automatically passed to next().
 
 ```JavaScript
@@ -90,7 +95,9 @@ app.use((req, res) => {
 });
 
 ```
+
 ##### Using co
+
 ```JavaScript
 app.get('/users', (req, res, next) => co(function* () {
   res.locals.resolved = yield db.collection('users').find({}).toArray();
